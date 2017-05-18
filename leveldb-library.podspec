@@ -2,9 +2,9 @@ Pod::Spec.new do |s|
   s.name             = 'leveldb-library'
   s.version          = '1.18.3'
   s.author           = 'The LevelDB Authors'
-  s.license          = { :type => 'Apache', :file => 'LICENSE' }
+  s.license          = 'New BSD'
   s.homepage         = 'https://github.com/google/leveldb'
-  s.source           = { :git => 'https://github.com/matehat/leveldb.git',
+  s.source           = { :git => 'https://github.com/mariohahn/leveldb.git',
                          :tag => "v1.18.1" }
   s.summary          = 'A fast key-value storage library'
   s.description      = <<-DESC
@@ -17,6 +17,7 @@ Pod::Spec.new do |s|
 
   s.requires_arc = false
 
+  s.header_dir = "leveldb"
   s.source_files =
       'db/*.{cc}',
       'port/*.{cc}',
@@ -34,18 +35,17 @@ Pod::Spec.new do |s|
       'port',
       'table',
       'util'
-
   s.exclude_files =
           '**/*_test.cc',
           '**/*_bench.cc',
           'port/win'
 
-  s.xcconfig = { 'HEADER_SEARCH_PATHS' => '$(inherited) "${PODS_ROOT}/Firebase/Firebase/Firebase"',
-                 "CC" => "clang",
-                 "CXX" => "clang++",
-                 "HEADER_SEARCH_PATHS" => "\"${PODS_ROOT}/leveldb-library/\" \"${PODS_ROOT}/leveldb-library/include\"",
-                 "WARNING_CFLAGS" => "-Wno-shorten-64-to-32",
-                 "OTHER_LDFLAGS" => "-lc++"
+  s.xcconfig = {
+                 'CC' => '"clang"',
+                 'CXX' => '"clang++"',
+                 'HEADER_SEARCH_PATHS' => '"\"${PODS_ROOT}/leveldb-library/\" \"${PODS_ROOT}/leveldb-library/include\""',
+                 'WARNING_CFLAGS' => '"-Wno-shorten-64-to-32"',
+                 'OTHER_LDFLAGS' => '"-lc++"'
                }
 
 end
